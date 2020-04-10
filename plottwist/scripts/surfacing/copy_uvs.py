@@ -32,5 +32,5 @@ def copy_uvs():
     for object in selected_objects:
         mc.select([driver, object])
 
-        #transfer attributes
-        mc.transferAttributes(sampleSpace=4,transferUVs=2, transferColors=0)
+        # transfer attributes
+        mc.transferAttributes(sampleSpace=4, transferUVs=2, transferColors=0)
