@@ -1,0 +1,3 @@
+include plottwist/scripts/maya/__logging__.ini
+include versioneer.py
+include plottwist/scripts/maya/_version.py
