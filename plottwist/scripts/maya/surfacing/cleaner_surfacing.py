@@ -141,14 +141,26 @@ def clean_cameras():
 
 
 def clean_tesselation():
-    mc.listRelatives('root', ad=True)
+    mc.select('root')
+    mc.listRelatives('root', allDescendents=True)
     selection = mc.filterExpand(ex=True, sm=12)
     
     for i in selection :
         mc.setAttr(i + '.aiSubdivType', 0)
-    
+        
+    mc.select(cl=True)
     LOGGER.info('Set Subdivision to 0 on all meshes')
-
+    
+def uv_boundary_smooth():
+    mc.select('root')
+    mc.listRelatives('root', allDescendents=True)
+    selection = mc.filterExpand(ex=True, sm=12)
+    
+    for i in selection :
+        mc.setAttr(i + '.osdFvarBoundary', 1)
+    
+    mc.select(cl=True)
+    LOGGER.info('Set UV Boundary Smoothing on Preserve Edges and Corner on all meshes')  
 
 if __name__ == '__main__':
     clean_render_layers()
@@ -158,3 +170,4 @@ if __name__ == '__main__':
     clean_custom_nodes()
     clean_cameras()
     clean_tesselation()
+    uv_boundary_smooth()
